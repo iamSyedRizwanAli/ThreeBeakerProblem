@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Three Beaker Problem - ARNEX</title>
+		<link rel="stylesheet" type="text/css" href="beaker.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	</head>
+	<body>
+		<center>
+		<div>
+			
+			<h1><img id = 'alogo' src = 'arnex_a_black.png'> 3 BEAKER PROBLEM</h1><hr>
+		</div>
+		<div>
+			<table>
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<td>You're required to place<br>4 Litre water in any beaker<hr></td>
+							</tr>
+							<tr>
+								<td id='msgbox'>Message:<hr>
+									<span id = 'msg'>
+										Click Start to Continue
+									<span><br>
+								</td>
+							</tr>
+							<tr>
+								<td><center><br><button id = 'startButton' >START</button></center></td>
+							</tr>
+						</table>
+					</td>
+				<td>
+				<table>
+					<tr>
+						<td><img class = 'beakersegmentdummy' id = 'col11' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegmentdummy' id = 'col12' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col13' src = 'trans_back.png'></td>
+					</tr>
+					<tr>
+						<td><img class = 'beakersegmentdummy' id = 'col21' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegmentdummy' id = 'col22' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col23' src = 'trans_back.png'></td>
+					</tr>
+					<tr>
+						<td><img class = 'beakersegmentdummy' id = 'col31' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegmentdummy' id = 'col32' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col33' src = 'trans_back.png'></td>
+					</tr>
+					<tr>
+						<td><img class = 'beakersegmentdummy' id = 'col41' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col42' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col43' src = 'trans_back.png'></td>
+					</tr>
+					<tr>
+						<td><img class = 'beakersegmentdummy' id = 'col51' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col52' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col53' src = 'trans_back.png'></td>
+					</tr>
+					<tr>	
+						<td><img class = 'beakersegment' id = 'col61' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col62' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col63' src = 'trans_back.png'></td>
+					</tr>
+					<tr>
+						<td><img class = 'beakersegment' id = 'col71' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col72' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col73' src = 'trans_back.png'></td>
+					</tr>
+					<tr>
+						<td><img class = 'beakersegment' id = 'col81' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col82' src = 'trans_back.png'></td>
+						<td><img class = 'beakersegment' id = 'col83' src = 'trans_back.png'></td>
+					</tr>
+					<tr>
+						<th class = 'labels'>A</th>
+						<th class = 'labels'>B</th>
+						<th class = 'labels'>C</th>
+					</tr>
+				</table>
+				</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<br>Pour water from<br>
+			<button id = 'a2b_btn'>A to B</button>
+			<button id = 'a2c_btn'>A to C</button>
+			<button id = 'b2a_btn'>B to A</button>
+			<button id = 'b2c_btn'>B to C</button>
+			<button id = 'c2a_btn'>C to A</button>
+			<button id = 'c2b_btn'>C to B</button>
+		</div>
+		<div>
+			<table>
+				<tbody style="display:none">
+					<tr>
+						<td id = 'a'>0</td>
+						<td id = 'b'>0</td>
+						<td id = 'c'>0</td>
+						<td id = 'startedFlag'>0</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>	
+			<hr>
+			The rules for this game are simple:<br>
+			There are 3 beakers, the capacity of each beaker is <br>
+			<strong>A</strong> = <strong>3 Litres</strong>, <strong>B</strong> = <strong>5 Litres</strong>, and <strong>C</strong> = <strong>8 Litres</strong><br>
+			You will pour water from one beaker to another, such that either one of the beaker emptizes, or other gets filled.<br>
+			All you need is to place 4 litre water in any of the beakers.
+			<hr>Developed by ARNEX
+		</div>
+	</center>
+	</body>
+	<footer>
+		<script>
+			$(document).ready(function(){
+				$('#startButton').click(function(){
+					$('#a').text(0);
+					$('#b').text(0);
+					$('#c').text(8);	
+					$('#startedFlag').text(1);
+					$('#msg').text('None');
+
+				var segmentsOfC = ['#col83', '#col73', '#col63', '#col53', '#col43', '#col33', '#col23', '#col13'];				
+				
+				$('.beakersegment').css('background-color', '#ADD8E6');
+
+
+				for(i = 0 ; i < 8 ; i++)
+					$(segmentsOfC[i]).css('background-color', '#8bc34a');										
+				});
+			});
+
+			$(document).ready(function(){
+				$('#a2b_btn').click(function(){
+					if($('#startedFlag').text() == 1){
+
+						var x = $('#a').text();
+				
+						if(x == 0){
+							$('#msg').text('Beaker A is Empty');
+						}else if($('#b').text() == 5){
+							$('#msg').text('Beaker B is Full');
+						}else{
+							var aa = $('#a').text();
+							var bb = $('#b').text();
+							$('#msg').text('None');
+
+							var flag = true;
+
+							while(flag){
+								if(bb == 5)
+									flag = false;
+								else if(aa == 0)
+									flag = false;
+								else{
+									bb++;
+									aa--;
+								}
+							}
+
+							$('#a').text(aa);
+							$('#b').text(bb);							
+
+							if($('#b').text() == 4 || $('#c').text() == 4){
+								$('#msg').text('Game Solved');
+								$('#startedFlag').text(0);
+								alert("Game Solved");
+							}
+
+							color();
+						}
+					}
+
+				});
+			});
+
+			
+			$(document).ready(function(){
+				$('#a2c_btn').click(function(){
+					if($('#startedFlag').text() == 1){
+
+						var x = $('#a').text();
+				
+						if(x == 0){
+							$('#msg').text('Beaker A is Empty');
+						}else if($('#c').text() == 8){
+							$('#msg').text('Beaker B is Full');
+						}else{
+							var aa = $('#a').text();
+							var cc = $('#c').text();
+							$('#msg').text('None');
+							var flag = true;
+
+							while(flag){
+								if(cc == 8)
+									flag = false;
+								else if(aa == 0)
+									flag = false;
+								else{
+									aa--;
+									cc++;
+								}
+							}
+
+							$('#a').text(aa);
+							$('#c').text(cc);
+
+							if($('#b').text() == 4 || $('#c').text() == 4){
+								$('#msg').text('Game Solved');
+								$('#startedFlag').text(0);
+								alert("Game Solved");
+							}
+						
+							color();	
+						}
+					}
+
+				});
+			});
+			
+			$(document).ready(function(){
+				$('#b2a_btn').click(function(){
+					if($('#startedFlag').text() == 1){
+
+						var x = $('#b').text();
+				
+						if(x == 0){
+							$('#msg').text('Beaker B is Empty');
+						}else if($('#a').text() == 5){
+							$('#msg').text('Beaker A is Full');
+						}else{
+							var aa = $('#a').text();
+							var bb = $('#b').text();
+							$('#msg').text('None');
+
+							var flag = true;
+
+							while(flag){
+								if(bb == 0)
+									flag = false;
+								else if(aa == 3)
+									flag = false;
+								else{
+									bb--;
+									aa++;
+								}
+							}
+
+							$('#a').text(aa);
+							$('#b').text(bb);
+
+							if($('#b').text() == 4 || $('#c').text() == 4){
+								$('#msg').text('Game Solved');
+								$('#startedFlag').text(0);
+								alert("Game Solved");
+							}
+
+							color();
+						}
+					}
+
+				});
+			});
+
+			$(document).ready(function(){
+				$('#b2c_btn').click(function(){
+					if($('#startedFlag').text() == 1){
+
+						var x = $('#b').text();
+				
+						if(x == 0){
+							$('#msg').text('Beaker B is Empty');
+						}else if($('#c').text() == 8){
+							$('#msg').text('Beaker C is Full');
+						}else{
+							var bb = $('#b').text();
+							var cc = $('#c').text();
+							$('#msg').text('None');
+
+							var flag = true;
+
+							while(flag){
+								if(bb == 0)
+									flag = false;
+								else if(cc == 8)
+									flag = false;
+								else{
+									bb--;
+									cc++;
+								}
+							}
+
+							$('#b').text(bb);
+							$('#c').text(cc);					
+
+							if($('#b').text() == 4 || $('#c').text() == 4){
+								$('#msg').text('Game Solved');
+								$('#startedFlag').text(0);
+								alert("Game Solved");
+							}
+
+							color();
+						}
+					}
+
+				});
+			});
+
+			$(document).ready(function(){
+				$('#c2a_btn').click(function(){
+					if($('#startedFlag').text() == 1){
+
+						var x = $('#c').text();
+				
+						if(x == 0){
+							$('#msg').text('Beaker C is Empty');
+						}else if($('#a').text() == 5){
+							$('#msg').text('Beaker A is Full');
+						}else{
+							var aa = $('#a').text();
+							var cc = $('#c').text();
+							$('#msg').text('None');
+
+							var flag = true;
+
+							while(flag){
+								if(aa == 3)
+									flag = false;
+								else if(cc == 0)
+									flag = false;
+								else{
+									aa++;
+									cc--;
+								}
+							}
+
+							$('#a').text(aa);
+							$('#c').text(cc);
+
+							if($('#b').text() == 4 || $('#c').text() == 4){
+								$('#msg').text('Game Solved');
+								$('#startedFlag').text(0);
+								alert("Game Solved");
+							}
+							
+							color();
+						}
+					}
+
+				});
+			});
+
+			$(document).ready(function(){
+				$('#c2b_btn').click(function(){
+					if($('#startedFlag').text() == 1){
+
+						var x = $('#c').text();
+				
+						if(x == 0){
+							$('#msg').text('Beaker C is Empty');
+						}else if($('#b').text() == 5){
+							$('#msg').text('Beaker B is Full');
+						}else{
+							var bb = $('#b').text();
+							var cc = $('#c').text();
+							$('#msg').text('None');
+
+							var flag = true;
+
+							while(flag){
+								if(bb == 5)
+									flag = false;
+								else if(cc == 0)
+									flag = false;
+								else{
+									bb++;
+									cc--;
+								}
+							}
+
+							$('#b').text(bb);
+							$('#c').text(cc);
+
+							if($('#b').text() == 4 || $('#c').text() == 4){
+								$('#msg').text('Game Solved');
+								$('#startedFlag').text(0);
+								alert("Game Solved");
+							}
+							
+							color();
+						}
+					}
+
+				});
+			});
+
+			function color(){
+				
+				var segmentsOfA = ['#col81', '#col71', '#col61'];
+				var segmentsOfB = ['#col82', '#col72', '#col62', '#col52', '#col42'];
+				var segmentsOfC = ['#col83', '#col73', '#col63', '#col53', '#col43', '#col33', '#col23', '#col13'];				
+				
+				$('.beakersegment').css('background-color', '#ADD8E6');
+
+				var i;
+				var a = $('#a').text();
+				var b = $('#b').text();
+				var c = $('#c').text();
+
+				for(i = 0 ; i < a ; i++)
+					$(segmentsOfA[i]).css('background-color', '#8bc34a');
+
+				for(i = 0 ; i < b ; i++)
+					$(segmentsOfB[i]).css('background-color', '#8bc34a');
+
+				for(i = 0 ; i < c ; i++)
+					$(segmentsOfC[i]).css('background-color', '#8bc34a');
+
+			}
+
+		</script>
+	</footer>
+</html>
